@@ -1,0 +1,52 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+      <div class="topbar">
+        <app-topbar></app-topbar>
+      </div>
+      <div class="informacion">
+          
+          <div class="tabla-informacion">
+            <div class="crear-publicacion">
+              <h2>Crear Nueva Publicación</h2>
+              <form (ngSubmit)="crearPublicacion()" #createForm="ngForm">
+                <div class="form-group">
+                  <label for="titulo">Título</label>
+                  <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="publicacion.titulo" required>
+                </div>
+                <div class="form-group">
+                  <label for="subtitulo">Subtítulo</label>
+                  <input type="text" class="form-control" id="subtitulo" name="subtitulo" [(ngModel)]="publicacion.subtitulo" required>
+                </div>
+                <div class="form-group">
+                  <label for="descripcion">Descripción</label>
+                  <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="publicacion.descripcion" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="categoria">Categoría</label>
+                  <input type="text" class="form-control" id="categoria" name="categoria" [(ngModel)]="publicacion.categoria" required>
+                </div>
+                <div class="form-group">
+                  <label for="imagen">URL de la Imagen</label>
+                  <input type="text" class="form-control" id="imagen" name="imagen" [(ngModel)]="publicacion.imagen" required>
+                </div>
+                <div class="form-group">
+                  <label for="url">URL del Recurso</label>
+                  <input type="text" class="form-control" id="url" name="url" [(ngModel)]="publicacion.url" required>
+                </div>
+                <div class="form-group">
+                  <label for="duracion">Duración (en minutos)</label>
+                  <input type="number" class="form-control" id="duracion" name="duracion" [(ngModel)]="publicacion.duracion" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear Publicación</button>
+                <button type="button" class="btn btn-secondary" (click)="volver()">Volver</button>
+              </form>
+            </div>
+            
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

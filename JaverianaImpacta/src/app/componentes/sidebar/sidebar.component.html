@@ -1,0 +1,42 @@
+<div class="">
+  <div class="row vh-100 align-items-center" id="sidebar" [ngClass]="{ 'oculto': !visible }">
+    <div>
+      <app-logo-universidad id="imagen" color="white" routerLink="/resumen"></app-logo-universidad>
+      <ul id="items" class="nav flex-column nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/entidades">ENTIDADES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profesores">PROFESORES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/estudiantes">ESTUDIANTES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/proyectos">PROYECTOS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/vinculaciones">VINCULACIONES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/publicaciones">PUBLICACIONES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/metricas">MÉTRICAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/informes">INFORMES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/actividades">ACTIVIDADES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/administracion">ADMINISTRACIÓN</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row vh-100 align-items-center desplegable" [ngClass]="{'no-desplegado': !visible }">
+        <button type="button" (click)="estadoSidebar()">|</button>
+  </div>
+</div>

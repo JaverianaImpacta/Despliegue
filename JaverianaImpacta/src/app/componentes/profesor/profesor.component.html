@@ -1,0 +1,55 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+      <div class="topbar">
+          <app-topbar></app-topbar>
+      </div>
+      <div class="informacion">
+          <div class="filtros">
+           
+                  <select [(ngModel)]="selectedDate">
+                      @for (date of dates; track date) {<option>{{ date }}</option>}
+                  </select>
+                  <select [(ngModel)]="selectedStatus">
+                      @for (status of statuses; track status) {<option>{{ status }}</option>}
+                  </select>
+              
+
+          </div>
+          <div class="tabla-informacion">
+            <h1>Profesores</h1>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Id Institucional</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Correo institucional</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (profesor of profesores; track profesor.id){
+                  <tr>
+                    <th scope="row">{{profesor.id}}</th>
+                    <td>{{profesor.idInstitucional}}</td>
+                    <td>{{profesor.cedula}}</td>
+                    <td>{{obtenerNombres(profesor.cedula)}}</td>
+                    <td>{{obtenerApellidos(profesor.cedula)}}</td>
+                    <td>{{profesor.correoInstitucional}}</td>
+                    <td>{{obtenerTelefono(profesor.cedula)}}</td>
+                    <td><button class="btn btn-warning">Detalles</button></td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

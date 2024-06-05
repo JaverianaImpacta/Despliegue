@@ -1,0 +1,388 @@
+/* Coloca la URL de datos aquí */
+
+
+/* Estilos CSS */
+.lienzo {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+/* Fondo negro con opacidad */
+.lienzo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Color negro con 60% de opacidad */
+  z-index: 0; /* Colocar el fondo detrás de otros elementos */
+}
+
+/* Estilos para la imagen */
+.lienzo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1; /* Colocar la imagen detrás del contenido */
+}
+.logos-u,
+.informacion-legal {
+  border-bottom: 3px solid white; /* Agrega un borde inferior blanco de 3px */
+  position: relative;
+}
+
+.linea-separadora {
+  position: absolute;
+  top: calc(50% - 1.5px); /* Posición vertical centrada */
+  left: 50%; /* Posición horizontal centrada */
+  transform: translateX(-50%); /* Centra horizontalmente el botón */
+  width: 100px; /* Ancho del botón */
+  height: 3px; /* Altura de la línea */
+  background-color: white; /* Color de la línea */
+}
+.logos-u {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 80%;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  text-align: center;
+  z-index: 1; /* Colocar al frente de la imagen */
+}
+
+.informacion-legal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30%;
+  width: 100%;
+  text-align: center;
+  z-index: 1; /* Colocar al frente de la imagen */
+}
+
+.informacion-legal p {
+  color: white;
+  padding-top: 90px;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
+}
+.boton-redondo-separador {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #FCCC04;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px; /* Ajustar el tamaño de la fuente */
+  font-weight: bold;
+  transform: translate(-50%, -50%) rotate(-90deg); /* Rotación del texto */
+  z-index: 1;
+}
+
+.logos-u {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.logos{
+  width: 100vw;
+  height: 70%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.redes{
+  width: 100vw;
+  height: 30%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo-javeriana, .logo-prosofi, .redes-jave, .redes-prosofi {
+  width: 100%;
+  height: 100%; /* Ajusta según sea necesario */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Se necesita para el posicionamiento relativo */
+}
+.logo-javeriana img {
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 98%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+  height: 98%;/* Ajusta la altura de la imagen al 100% del contenedor */
+  object-fit: contain; /* Ajusta el tamaño de la imagen manteniendo su relación de aspecto y asegurándose de que todo el contenido de la imagen esté visible dentro del contenedor */
+}
+.logo-prosofi img {
+  padding-left: 0px;
+  padding-top: 10px;
+  width: 98%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+  height: 98%; /* Ajusta la altura de la imagen al 100% del contenedor */
+  object-fit: contain; /* Ajusta el tamaño de la imagen manteniendo su relación de aspecto y asegurándose de que todo el contenido de la imagen esté visible dentro del contenedor */
+}
+.circle {
+  width: 50px; /* Tamaño del círculo */
+  height: 50px; /* Tamaño del círculo */
+  border: 5px solid white; /* Borde blanco de 2px */
+  border-radius: 50%; /* Hace que el borde sea redondeado */
+  background-color: transparent; /* Fondo transparente */
+  display: flex; /* Para centrar el contenido verticalmente */
+  justify-content: center; /* Para centrar el contenido horizontalmente */
+  align-items: center; /* Para centrar el contenido verticalmente */
+  margin-right: 10px ;
+}
+
+/* Estilos para el icono */
+.circle i {
+  margin-top: 2px;
+  color: white; /* Color blanco del icono */
+  font-size: 28px; /* Tamaño del icono */
+}
+
+@media (min-width: 859px) and (max-width: 1700px) {
+  .lienzo {
+    position: relative;
+    width: 100%;
+    height: 600px;
+  }
+
+  .logos-u,
+  .informacion-legal {
+    border-bottom: 3px solid white; /* Agrega un borde inferior blanco de 3px */
+    position: relative;
+  }
+
+
+  .informacion-legal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Colocar al frente de la imagen */
+  }
+
+  .informacion-legal p {
+    color: white;
+    padding-top: 90px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .boton-redondo-separador {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #FCCC04;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px; /* Ajustar el tamaño de la fuente */
+    font-weight: bold;
+    transform: translate(-50%, -50%) rotate(-90deg); /* Rotación del texto */
+    z-index: 1;
+  }
+  .logos-u {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .logos{
+    width: 100vw;
+    height: 70%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+  .redes{
+    width: 100vw;
+    height: 30%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logo-javeriana, .logo-prosofi, .redes-jave, .redes-prosofi {
+    width: 100%;
+    height: 100%; /* Ajusta según sea necesario */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Se necesita para el posicionamiento relativo */
+  }
+  .logo-javeriana img {
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 98%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 98%;/* Ajusta la altura de la imagen al 100% del contenedor */
+    object-fit: contain; /* Ajusta el tamaño de la imagen manteniendo su relación de aspecto y asegurándose de que todo el contenido de la imagen esté visible dentro del contenedor */
+  }
+  .logo-prosofi img {
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 98%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 98%; /* Ajusta la altura de la imagen al 100% del contenedor */
+    object-fit: contain; /* Ajusta el tamaño de la imagen manteniendo su relación de aspecto y asegurándose de que todo el contenido de la imagen esté visible dentro del contenedor */
+  }
+  .circle {
+    width: 50px; /* Tamaño del círculo */
+    height: 50px; /* Tamaño del círculo */
+    border: 5px solid white; /* Borde blanco de 2px */
+    border-radius: 50%; /* Hace que el borde sea redondeado */
+    background-color: transparent; /* Fondo transparente */
+    display: flex; /* Para centrar el contenido verticalmente */
+    justify-content: center; /* Para centrar el contenido horizontalmente */
+    align-items: center; /* Para centrar el contenido verticalmente */
+    margin-right: 10px ;
+  }
+
+  /* Estilos para el icono */
+  .circle i {
+    margin-top: 2px;
+    color: white; /* Color blanco del icono */
+    font-size: 28px; /* Tamaño del icono */
+  }
+
+}
+
+
+@media (max-width: 858px) {
+  .lienzo {
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+
+
+
+  .logos-u,
+  .informacion-legal {
+    border-bottom: 3px solid white; /* Agrega un borde inferior blanco de 3px */
+    position: relative;
+  }
+
+
+  .informacion-legal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Colocar al frente de la imagen */
+  }
+
+  .informacion-legal p {
+    color: white;
+    padding-top: 42px;
+    font-weight: bold;
+    font-size: 11px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .boton-redondo-separador {
+    position: absolute;
+    top: 81%;
+    left: 50%;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #FCCC04;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px; /* Ajustar el tamaño de la fuente */
+    font-weight: bold;
+    transform: translate(-50%, -50%) rotate(-90deg); /* Rotación del texto */
+    z-index: 1;
+  }
+  .logos-u {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .logos{
+    width: 100vw;
+    height: 70%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+  .redes{
+    width: 100vw;
+    height: 30%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logo-javeriana, .logo-prosofi, .redes-jave, .redes-prosofi {
+    width: 100%;
+    height: 100%; /* Ajusta según sea necesario */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Se necesita para el posicionamiento relativo */
+    z-index: 0;
+  }
+  .logo-javeriana img {
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 90%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 90%;/* Ajusta la altura de la imagen al 100% del contenedor */
+    object-fit: contain; /* Ajusta el tamaño de la imagen manteniendo su relación de aspecto y asegurándose de que todo el contenido de la imagen esté visible dentro del contenedor */
+  }
+  .logo-prosofi img {
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 90%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 90%; /* Ajusta la altura de la imagen al 100% del contenedor */
+    object-fit: contain; /* Ajusta el tamaño de la imagen manteniendo su relación de aspecto y asegurándose de que todo el contenido de la imagen esté visible dentro del contenedor */
+  }
+  .circle {
+    width: 20px; /* Tamaño del círculo */
+    height: 20px; /* Tamaño del círculo */
+    border: 2px solid white; /* Borde blanco de 2px */
+    border-radius: 50%; /* Hace que el borde sea redondeado */
+    background-color: transparent; /* Fondo transparente */
+    display: flex; /* Para centrar el contenido verticalmente */
+    justify-content: center; /* Para centrar el contenido horizontalmente */
+    align-items: center; /* Para centrar el contenido verticalmente */
+    margin-right: 5px ;
+  }
+
+  /* Estilos para el icono */
+  .circle i {
+    margin-top: 2px;
+    color: white; /* Color blanco del icono */
+    font-size: 13px; /* Tamaño del icono */
+  }
+
+}

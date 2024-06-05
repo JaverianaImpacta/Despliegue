@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row vh-100 justify-content-center align-items-center">
+    <div class="col d-flex justify-content-center text-center">
+      <form class="custom-form" [formGroup]="chequeoFormulario" (ngSubmit)="onSubmit()">
+        @if(!registrandoPersona){
+          <h3>¡Cuentanos un poco más acerca de tu entidad!</h3>
+          <div class="form-group">
+            <input type="number" placeholder="Nit (Sin digito de verificación)" class="form-control" formControlName="nit" required="required"/>
+            <input type="text" placeholder="Razon social" class="form-control" formControlName="razonSocial" required="required"/>
+            <input type="text" placeholder="CIIU" class="form-control" formControlName="actividadEconomica" required="required"/>
+            <input type="email" placeholder="Correo electronico" class="form-control" formControlName="correo" required="required"/>
+            <input type="number" placeholder="Numero telefonico" class="form-control" formControlName="telefono" required="required"/>
+            <button class="btn btn-warning" (click)="siguiente()">Continuar</button>
+          </div>
+        }@else {
+          <h3>¡Ahora, cuentanos un poco más sobre ti!</h3>
+          <div class="form-group">
+            <label for="tipo">Tipo de documento</label>
+            <select id="tipo" formControlName="tipoDocumento">
+              <option value="CC">Cedula de ciudadania</option>
+              <option value="CE">Cedula de extranjeria</option>
+              <option value="TI">Tarjeta de identidad</option>
+              <option value="PP">Pasaporte</option>
+            </select>
+            <input type="number" placeholder="Numero de documento" class="form-control" formControlName="cedula" required="required"/>
+            <input type="text" placeholder="Primer nombre" class="form-control" formControlName="primerNombre" required="required"/>
+            <input type="text" placeholder="Segundo nombre" class="form-control" formControlName="segundoNombre" required="required"/>
+            <input type="text" placeholder="Primer apellido" class="form-control" formControlName="primerApellido" required="required"/>
+            <input type="text" placeholder="Segundo apellido" class="form-control" formControlName="segundoApellido" required="required"/>
+            <input type="email" placeholder="Correo electronico" class="form-control" formControlName="correoElectronico" required="required"/>
+            <label for="sexo">Genero</label>
+            <select id="sexo" formControlName="sexo">
+              <option value="F">Femenino</option>
+              <option value="M">Masculino</option>
+              <option value="O">Otro</option>
+            </select>
+            <input type="date" placeholder="Fecha de nacimiento" class="form-control" formControlName="fechaNacimiento" required="required"/>
+            <input type="text" placeholder="Eps" class="form-control" formControlName="eps" required="required"/>
+            <input type="text" placeholder="Direccion" class="form-control" formControlName="direccion" required="required"/>
+            <input type="number" placeholder="Numero de celular" class="form-control" formControlName="numeroCelular" required="required"/>
+            <button (click)="siguiente()" class="btn">Regresar</button> <button type="submit" class="btn btn-warning">Finalizar registro</button>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</div>

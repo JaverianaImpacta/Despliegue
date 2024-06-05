@@ -1,0 +1,36 @@
+<app-sidebar></app-sidebar>
+<div class="contenido" [ngClass]="{ 'contenido-extendido': !visible }">
+  <div class="container">
+    <app-topbar></app-topbar>
+    <h1>Entidades Postuladas</h1>
+    @if (entidades.length > 0){
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (entidad of entidades; track entidad.id){
+            <tr>
+              <th scope="row">{{entidad.id}}</th>
+              <td>{{entidad.razonSocial}}</td>
+              <td>{{entidad.telefono}}</td>
+              <td>{{entidad.correo}}</td>
+              <td>
+                <button class="btn btn-warning" (click)="aprobarEntidad(entidad.id , entidad)">Aprobar</button>
+                <button class="btn btn-danger" (click)="rechazarEntidad(entidad.id)">Rechazar</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <h2>¡No hay entidades postuladas, vuelve pronto!</h2>
+    }
+  </div>
+</div>

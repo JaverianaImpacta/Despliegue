@@ -1,0 +1,64 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+    <div class="topbar">
+      <app-topbar></app-topbar>
+    </div>
+    <div class="informacion">
+      <div class="filtros">
+
+        <select [(ngModel)]="selectedDate">
+          @for (date of dates; track date) {<option>{{ date }}</option>}
+        </select>
+        <select [(ngModel)]="selectedStatus">
+          @for (status of statuses; track status) {<option>{{ status }}</option>}
+        </select>
+
+
+      </div>
+      <div class="tabla-informacion">
+        <table class="publicacion-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Imagen</th>
+              <th>Título</th>
+              <th>Subtítulo</th>
+              <th>Descripción</th>
+              <th>Categoría</th>
+              <th>URL</th>
+              <th>Duración (min)</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (publicacion of publicaciones; track publicacion) { <tr>
+              <td>{{publicacion.id}}</td>
+              <td>{{publicacion.imagen}}</td>
+              <td>{{ publicacion.titulo }}</td>
+              <td>{{ publicacion.subtitulo }}</td>
+              <td>{{ publicacion.descripcion }}</td>
+              <td>{{ publicacion.categoria }}</td>
+              <td>{{ publicacion.url }}</td>
+              <td>{{ publicacion.duracion }}</td>
+              <td>
+                <button (click)="editarPublicacion(publicacion.id)" class="boton">Editar</button>
+                <button (click)="confirmarEliminar(publicacion.id)"  class="boton">Eliminar</button>
+              </td>
+            </tr>}
+           
+          </tbody>
+        </table>
+        @if (publicaciones && publicaciones.length === 0) {<p>No hay publicaciones disponibles.</p>}
+
+        <div class="agregar-publicacion-btn">
+          <button class="btn-agregar" (click)="irACrearPublicacion()">Agregar Publicación</button>
+        </div>
+       
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

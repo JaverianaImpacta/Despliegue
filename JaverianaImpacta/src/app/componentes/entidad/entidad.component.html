@@ -1,0 +1,54 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+      <div class="topbar">
+        <app-topbar></app-topbar>
+      </div>
+      <div class="informacion">
+          <div class="filtros">
+           
+                  <select [(ngModel)]="selectedDate">
+                      @for (date of dates; track date) {<option>{{ date }}</option>}
+                  </select>
+                  <select [(ngModel)]="selectedStatus">
+                      @for (status of statuses; track status) {<option>{{ status }}</option>}
+                  </select>
+              
+
+          </div>
+          <div class="tabla-informacion">
+            <h1>Entidades</h1>
+            @if (admin){
+              <button class="btn btn-warning" routerLink="/entidadesPostuladas">Ver entidades postuladas</button>
+            }
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Actividad Economica</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (entidad of entidades; track entidad.id){
+                  <tr>
+                    <th scope="row">{{entidad.id}}</th>
+                    <td>{{entidad.razonSocial}}</td>
+                    <td>{{obtenerActividad(entidad.actividadEconomica)}}</td>
+                    <td>{{entidad.telefono}}</td>
+                    <td>{{entidad.correo}}</td>
+                    <td><button class="btn" (click)="detalles(entidad.id)">Detalles</button></td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

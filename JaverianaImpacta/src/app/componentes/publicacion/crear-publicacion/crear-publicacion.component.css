@@ -1,0 +1,232 @@
+.aplicacion {
+  width: 100vw; /* Toma el 100% del ancho de la ventana */
+  height: 100vh; /* Toma el 100% de la altura de la ventana */
+  background-color: #04347C; /* Color de fondo para visualización */
+  display: flex; /* Usar flexbox para centrar el contenido */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Estilo para el contenedor interno */
+.contenedor {
+ 
+  height: 97% ;
+  width: 100% ;
+  margin-right: 10px;
+  border-radius: 20px;
+  background-color: #e3e3e3; /* Color de fondo para visualización */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+}
+
+
+@media (min-width: 1701px){
+
+  .filtros{
+      display: flex;
+      align-items: center;
+      
+  }
+  .filtros select {
+      width: calc(15% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(80% - 20px);
+      margin-top: 20px;
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      margin-left: 40px;
+      font-size: 26px; /* Aumenta el tamaño de la letra */
+      font-family: Arial, sans-serif; /* Cambia el tipo de letra */
+      border: 1px solid #ccc;
+      background-color: #fcce04;
+  }
+  .filtros option {
+      font-size: 22px; /* Asegurarse de que las opciones también tengan un tamaño de letra reducido */
+  }
+  .topbar{
+     
+      width: 100%;
+      height: 15%;
+  }
+  
+  .informacion{
+     
+      width: 100%;
+      height: 85%;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .filtros{
+      width: calc(100% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(20% - 20px); /* 100% de la altura del contenedor menos el margen en ambos lados */
+    
+  }
+  
+  .tabla-informacion{
+      width: calc(100% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(100% - 20px); /* 100% de la altura del contenedor menos el margen en ambos lados */
+      margin-bottom: 10px;
+      border-radius: 15px;
+      background-color: white; /* Color de fondo para visualización */
+      overflow: auto;
+  }
+
+}
+@media (min-width: 859px) and (max-width: 1700px) {
+  .filtros{
+      display: flex;
+      align-items: center;
+  }
+  .filtros select {
+      width: calc(30% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(60% - 20px);
+   
+      margin: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      margin-left: 40px;
+      font-size: 36px; /* Aumenta el tamaño de la letra */
+      font-family: Arial, sans-serif; /* Cambia el tipo de letra */
+      border: 1px solid #ccc;
+      background-color: #fcce04;
+  }
+  .filtros option {
+      font-size: 12px; /* Asegurarse de que las opciones también tengan un tamaño de letra reducido */
+  }
+  
+  .topbar{
+   
+      width: 100%;
+      height: 10%;
+  }
+  
+  .informacion{
+
+      width: 100%;
+      height: 90%;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .filtros{
+      width: calc(100% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(20% - 20px); /* 100% de la altura del contenedor menos el margen en ambos lados */
+    
+  }
+  
+  .tabla-informacion{
+      width: calc(100% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(100% - 20px); /* 100% de la altura del contenedor menos el margen en ambos lados */
+      margin-bottom: 10px;
+      border-radius: 15px;
+      background-color: white; /* Color de fondo para visualización */
+      overflow: auto;
+  }
+
+}
+@media (max-width: 858px) {
+ 
+  .filtros{
+      display: flex;
+      align-items: center;
+  }
+  .filtros select {
+      width: calc(40% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(80% - 20px);
+      margin: 5px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fcce04;
+  }
+  .topbar{
+      
+      width: 100%;
+      height: 30%;
+  }
+  
+  .informacion{
+    
+      width: 100%;
+      height: 85%;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .filtros{
+      width: calc(100% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(20% - 20px); /* 100% de la altura del contenedor menos el margen en ambos lados */
+    
+  }
+  
+  .tabla-informacion{
+      width: calc(100% - 20px); /* 100% del ancho del contenedor menos el margen en ambos lados */
+      height: calc(100% - 20px); /* 100% de la altura del contenedor menos el margen en ambos lados */
+      margin-bottom: 10px;
+      border-radius: 15px;
+      background-color: lightgray; /* Color de fondo para visualización */
+      overflow: auto;
+  }
+}

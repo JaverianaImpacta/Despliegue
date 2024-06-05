@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="search-container">
+    <img src="assets/imagenes/buscar.png" alt="Buscar" class="search-icon">
+    <input type="text" placeholder="Buscar" class="search-input">
+  </div>
+
+  <div class="info-container">
+    <span class="date-time">{{today | date:'h:mm a d-M-y'}}</span>
+    <div class="notification" (click)="mostrarNotificaciones()">
+      <img src="assets/imagenes/notificacion.png" alt="boton de notificación">
+    </div>
+    <div class="cerrar-sesion" (click)="cerrarSesion()">
+      <img src="assets/imagenes/cerrar-sesion.png" alt="boton de cerra sesion">
+    </div>
+    <div class="profile">
+
+      <div class="circulo">
+        <img src="assets/imagenes/Blanca.jpg" alt="Blanca Oviedo" class="profile-pic">
+      </div>
+      <div class="profile-info">
+        <span class="name">Blanca Oviedo</span>
+        <span class="role">Coordinadora programa de proyección social</span>
+      </div>
+    </div>
+  </div>
+</div>

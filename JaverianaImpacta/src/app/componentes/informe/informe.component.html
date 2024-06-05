@@ -1,0 +1,52 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+      <div class="topbar">
+<app-topbar></app-topbar>
+      </div>
+      <div class="informacion">
+         
+          <div class="tabla-informacion">
+            <h1>Informes</h1>
+            <h2>Tenemos disponibles los siguientes informes. ¿Cual informe deseas generar?</h2>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo de informe</th>
+                <th scope="col">Detalles</th>
+                <th scope="col">Datos relevantes</th>
+                <th scope="col">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Proyectos sociales realizados</td>
+                    <td>Genera un informe en el cual se presentan los proyectos sociales realizados en el marco de asignaturas como PSU y CDIO-3</td>
+                    <td>Población objetivo, Tematica</td>
+                    <td><button class="btn btn-primary" (click)="descargarProyectos()">Descargar</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Estudiantes sin jornada Sentido de mi practica</td>
+                    <td>Genera un informe en el cual se muestran los estudiantes en el sistema sin haber completado la jornada Sentido de mi practoca</td>
+                    <td>Sentido mi practica, Cedula</td>
+                    <td><button class="btn btn-primary" (click)="descargarPractica()">Descargar</button></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Estudiantes sin afiliar a la ARL</td>
+                    <td>Genera un informe en el cual se muestran los estudiantes que no han sido afiliados a la ARL</td>
+                    <td>ARL, Cedula</td>
+                    <td><button class="btn btn-primary" (click)="descargarArl()">Descargar</button></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,63 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+      <div class="topbar">
+<app-topbar></app-topbar>
+      </div>
+      <div class="informacion">
+          <div class="filtros">
+           
+                  <select [(ngModel)]="selectedDate">
+                      @for (date of dates; track date) {<option>{{ date }}</option>}
+                  </select>
+                  <select [(ngModel)]="selectedStatus">
+                      @for (status of statuses; track status) {<option>{{ status }}</option>}
+                  </select>
+              
+
+          </div>
+          <div class="tabla-informacion">
+            <h1>Proyectos</h1>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Población objetivo</th>
+                <th scope="col">Entidad</th>
+                <th scope="col">Lider</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Tematica</th>
+                <th scope="col">Aprobado</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (proyecto of proyectos; track proyecto.id){
+                  <tr>
+                    <th scope="row">{{proyecto.id}}</th>
+                    <td>{{proyecto.codigo}}</td>
+                    <td>{{proyecto.nombre}}</td>
+                    <td>{{proyecto.descripcion}}</td>
+                    <td>{{proyecto.objetivo}}</td>
+                    <td>{{obtenerEntidad(proyecto.entidad)}}</td>
+                    <td>{{obtenerLider(proyecto.lider)}}</td>
+                    <td>{{proyecto.ubicacion}}</td>
+                    <td>{{proyecto.tematica}}</td>
+                    <td>{{traduccion(proyecto.aprobacion)}}</td>
+                    <td>{{traduccion(proyecto.activo)}}</td>
+                    <td><button class="btn btn-warning">Detalles</button></td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

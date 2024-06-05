@@ -1,0 +1,43 @@
+#sidebar {
+  padding-top: 3%;
+  width: 200px;
+  position: fixed;
+  left: 0;
+  height: 100%;
+  background: #04347C;
+  /* Color de fondo para visualización */
+  ;
+}
+
+.desplegable {
+  margin-left: 187px;
+  position: fixed;
+}
+
+.no-desplegado {
+  margin-left: 0;
+  position: fixed;
+}
+
+.oculto {
+  display: none;
+}
+
+.nav-item {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.nav-link {
+  color: white;
+}
+
+#items {
+  border: #2C5697 solid 0px;
+}
+
+@media (max-width: 858px) {
+  #sidebar {
+    overflow: scroll;
+  }
+}

@@ -1,0 +1,983 @@
+networks:
+  deployment:
+    name: deployment
+    driver: bridge
+
+services:
+  database:
+    image: mysql:latest
+    container_name: database
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "3306:3306"
+    networks:
+      - deployment
+    volumes:
+      - ./mysql/scripts:/docker-entrypoint-initdb.d
+      - ./mysql/config/my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  actividad:
+    build:
+      context: ./actividad
+    container_name: actividad
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=actividad
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8090:8090"
+    networks:
+      - deployment
+
+  actividad_economica:
+    build:
+      context: ./actividad_economica
+    container_name: actividad_economica
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=actividad_economica
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8092:8092"
+    networks:
+      - deployment
+
+  actividadxvinculacion:
+    build:
+      context: ./actividadxvinculacion
+    container_name: actividadxvinculacion
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=actividadxvinculacion
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8091:8091"
+    networks:
+      - deployment
+
+  asignacion_recurso:
+    build:
+      context: ./asignacion_recurso
+    container_name: asignacion_recurso
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=asignacion_recurso
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8125:8125"
+    networks:
+      - deployment
+
+  asignatura:
+    build:
+      context: ./asignatura
+    container_name: asignatura
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=asignatura
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8093:8093"
+    networks:
+      - deployment
+  
+  autenticacion:
+    build:
+      context: ./autenticacion
+    container_name: autenticacion
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=autenticacion
+      - spring.datasource.url=jdbc:mysql://database:3306/autenticacion
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8085:8085"
+    networks:
+      - deployment
+
+  barrio:
+    build:
+      context: ./barrio
+    container_name: barrio
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=barrio
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8094:8094"
+    networks:
+      - deployment
+
+  calendario:
+    build:
+      context: ./calendario
+    container_name: calendario
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=calendario
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8095:8095"
+    networks:
+      - deployment
+
+  ciudad:
+    build:
+      context: ./ciudad
+    container_name: ciudad
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=ciudad
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8096:8096"
+    networks:
+      - deployment
+
+  clase:
+    build:
+      context: ./clase
+    container_name: clase
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=clase
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8097:8097"
+    networks:
+      - deployment
+
+  credencial:
+    build:
+      context: ./credencial
+    container_name: credencial
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=credencial
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8098:8098"
+    networks:
+      - deployment
+
+  decanatura:
+    build:
+      context: ./decanatura
+    container_name: decanatura
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=decanatura
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8099:8099"
+    networks:
+      - deployment
+
+  departamento:
+    build:
+      context: ./departamento
+    container_name: departamento
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=departamento
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8100:8100"
+    networks:
+      - deployment
+
+  departamento_politico:
+    build:
+      context: ./departamento_politico
+    container_name: departamento_politico
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=departamento_politico
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8101:8101"
+    networks:
+      - deployment
+
+  direccion_departamento:
+    build:
+      context: ./direccion_departamento
+    container_name: direccion_departamento
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=direccion_departamento
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8102:8102"
+    networks:
+      - deployment
+
+  direccion_programa:
+    build:
+      context: ./direccion_programa
+    container_name: direccion_programa
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=direccion_programa
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8103:8103"
+    networks:
+      - deployment
+
+  directivo:
+    build:
+      context: ./directivo
+    container_name: directivo
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=directivo
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8104:8104"
+    networks:
+      - deployment
+
+  entidad:
+    build:
+      context: ./entidad
+    container_name: entidad
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=entidad
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8086:8086"
+    networks:
+      - deployment
+
+  eps:
+    build:
+      context: ./eps
+    container_name: eps
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=eps
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8105:8105"
+    networks:
+      - deployment
+
+  estudiante:
+    build:
+      context: ./estudiante
+    container_name: estudiante
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=estudiante
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8081:8081"
+    networks:
+      - deployment
+
+  facultad:
+    build:
+      context: ./facultad
+    container_name: facultad
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=facultad
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8106:8106"
+    networks:
+      - deployment
+
+  genero:
+    build:
+      context: ./genero
+    container_name: genero
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=genero
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8107:8107"
+    networks:
+      - deployment
+
+  inscripcion:
+    build:
+      context: ./inscripcion
+    container_name: inscripcion
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=inscripcion
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8108:8108"
+    networks:
+      - deployment
+
+  interlocutor:
+    build:
+      context: ./interlocutor
+    container_name: interlocutor
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=interlocutor
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8109:8109"
+    networks:
+      - deployment
+
+  localidad:
+    build:
+      context: ./localidad
+    container_name: localidad
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=localidad
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8110:8110"
+    networks:
+      - deployment
+
+  matricula:
+    build:
+      context: ./matricula
+    container_name: matricula
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=matricula
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8111:8111"
+    networks:
+      - deployment
+
+  municipio:
+    build:
+      context: ./municipio
+    container_name: municipio
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=municipio
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8112:8112"
+    networks:
+      - deployment
+
+  pais:
+    build:
+      context: ./pais
+    container_name: pais
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=pais
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8113:8113"
+    networks:
+      - deployment
+
+  permiso:
+    build:
+      context: ./permiso
+    container_name: permiso
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=permiso
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8114:8114"
+    networks:
+      - deployment
+
+  persona:
+    build:
+      context: ./persona
+    container_name: persona
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=persona
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8088:8088"
+    networks:
+      - deployment
+
+  poblacion_objetivo:
+    build:
+      context: ./poblacion_objetivo
+    container_name: poblacion_objetivo
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=poblacion_objetivo
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8115:8115"
+    networks:
+      - deployment
+
+  profesor:
+    build:
+      context: ./profesor
+    container_name: profesor
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=profesor
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8089:8089"
+    networks:
+      - deployment
+
+  programa:
+    build:
+      context: ./programa
+    container_name: programa
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=programa
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8116:8116"
+    networks:
+      - deployment
+
+  proyecto:
+    build:
+      context: ./proyecto
+    container_name: proyecto
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=proyecto
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8082:8082"
+    networks:
+      - deployment
+
+  proyectoxtipo_proyecto:
+    build:
+      context: ./proyectoxtipo_proyecto
+    container_name: proyectoxtipo_proyecto
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=proyectoxtipo_proyecto
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8117:8117"
+    networks:
+      - deployment
+
+  publicacion:
+    build:
+      context: ./publicacion
+    container_name: publicacion
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=publicacion
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8118:8188"
+    networks:
+      - deployment
+
+  recurso:
+    build:
+      context: ./recurso
+    container_name: recurso
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=recurso
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8083:8083"
+    networks:
+      - deployment
+
+  rol:
+    build:
+      context: ./rol
+    container_name: rol
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=rol
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8087:8087"
+    networks:
+      - deployment
+
+  rolxpersona:
+    build:
+      context: ./rolxpersona
+    container_name: rolxpersona
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=rolxpersona
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8119:8119"
+    networks:
+      - deployment
+
+  semestre:
+    build:
+      context: ./semestre
+    container_name: semestre
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=semestre
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8120:8120"
+    networks:
+      - deployment
+
+  tematica_central:
+    build:
+      context: ./tematica_central
+    container_name: tematica_central
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=tematica_central
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8121:8121"
+    networks:
+      - deployment
+
+  tipo_documento:
+    build:
+      context: ./tipo_documento
+    container_name: tipo_documento
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=tipo_documento
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8122:8122"
+    networks:
+      - deployment
+
+  tipo_proyecto:
+    build:
+      context: ./tipo_proyecto
+    container_name: tipo_proyecto
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=tipo_proyecto
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8123:8123"
+    networks:
+      - deployment
+
+  tipo_vinculacion:
+    build:
+      context: ./tipo_vinculacion
+    container_name: tipo_vinculacion
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=tipo_vinculacion
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8124:8124"
+    networks:
+      - deployment
+
+  vinculacion:
+    build:
+      context: ./vinculacion
+    container_name: vinculacion
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - spring.application.name=vinculacion
+      - spring.datasource.url=jdbc:mysql://database:3306/javeriana_impacta
+      - spring.datasource.username=root
+      - spring.datasource.password=
+      - spring.datasource.driver.class.name=com.mysql.cj.jdbc.Driver
+      - spring.jpa.hibernate.dd.auto=update
+    ports:
+      - "8084:8084"
+    networks:
+      - deployment
+
+  javerianaimpacta:
+    build: ./JaverianaImpacta
+    container_name: javeriana_impacta
+    image: javerianaimpacta:v1
+    ports:
+      - "80:80"
+    expose:
+      - 80
+    networks:
+      - deployment
+    depends_on:
+      - actividad
+      - actividad_economica
+      - actividadxvinculacion
+      - asignacion_recurso
+      - asignatura
+      - autenticacion
+      - barrio
+      - calendario
+      - ciudad
+      - clase
+      - credencial
+      - decanatura
+      - departamento
+      - departamento_politico
+      - direccion_programa
+      - direccion_departamento
+      - directivo
+      - entidad
+      - eps
+      - estudiante
+      - facultad
+      - genero
+      - inscripcion
+      - interlocutor
+      - localidad
+      - matricula
+      - municipio
+      - pais
+      - permiso
+      - persona
+      - poblacion_objetivo
+      - profesor
+      - programa
+      - proyecto
+      - proyectoxtipo_proyecto
+      - publicacion
+      - recurso
+      - rol
+      - rolxpersona
+      - semestre
+      - tematica_central
+      - tipo_documento
+      - tipo_proyecto
+      - tipo_vinculacion
+      - vinculacion
+    entrypoint: ["/usr/local/bin/wait-for-it.sh", "actividad:8090", "--", 
+    "/usr/local/bin/wait-for-it.sh", "actividad_economica:8092", "--", 
+    "/usr/local/bin/wait-for-it.sh", "actividadxvinculacion:8091", "--", 
+    "/usr/local/bin/wait-for-it.sh", "asignacion_recurso:8125", "--", 
+    "/usr/local/bin/wait-for-it.sh", "asignatura:8093", "--", 
+    "/usr/local/bin/wait-for-it.sh", "autenticacion:8085", "--", 
+    "/usr/local/bin/wait-for-it.sh", "barrio:8094", "--", 
+    "/usr/local/bin/wait-for-it.sh", "calendario:8095", "--", 
+    "/usr/local/bin/wait-for-it.sh", "ciudad:8096", "--", 
+    "/usr/local/bin/wait-for-it.sh", "clase:8097", "--", 
+    "/usr/local/bin/wait-for-it.sh", "credencial:8098", "--", 
+    "/usr/local/bin/wait-for-it.sh", "decanatura:8099", "--", 
+    "/usr/local/bin/wait-for-it.sh", "departamento:8100", "--", 
+    "/usr/local/bin/wait-for-it.sh", "departamento_politico:8101", "--", 
+    "/usr/local/bin/wait-for-it.sh", "direccion_departamento:8102", "--", 
+    "/usr/local/bin/wait-for-it.sh", "direccion_programa:8103", "--", 
+    "/usr/local/bin/wait-for-it.sh", "directivo:8104", "--", 
+    "/usr/local/bin/wait-for-it.sh", "entidad:8086", "--", 
+    "/usr/local/bin/wait-for-it.sh", "eps:8105", "--", 
+    "/usr/local/bin/wait-for-it.sh", "estudiante:8081", "--", 
+    "/usr/local/bin/wait-for-it.sh", "facultad:8106", "--", 
+    "/usr/local/bin/wait-for-it.sh", "genero:8107", "--", 
+    "/usr/local/bin/wait-for-it.sh", "inscripcion:8108", "--", 
+    "/usr/local/bin/wait-for-it.sh", "interlocutor:8109", "--", 
+    "/usr/local/bin/wait-for-it.sh", "localidad:8110", "--", 
+    "/usr/local/bin/wait-for-it.sh", "matricula:8111", "--", 
+    "/usr/local/bin/wait-for-it.sh", "municipio:8112", "--", 
+    "/usr/local/bin/wait-for-it.sh", "pais:8113", "--", 
+    "/usr/local/bin/wait-for-it.sh", "permiso:8114", "--", 
+    "/usr/local/bin/wait-for-it.sh", "persona:8088", "--", 
+    "/usr/local/bin/wait-for-it.sh", "poblacion_objetivo:8115", "--", 
+    "/usr/local/bin/wait-for-it.sh", "profesor:8089", "--", 
+    "/usr/local/bin/wait-for-it.sh", "programa:8116", "--", 
+    "/usr/local/bin/wait-for-it.sh", "proyecto:8082", "--", 
+    "/usr/local/bin/wait-for-it.sh", "proyectoxtipo_proyecto:8117", "--", 
+    "/usr/local/bin/wait-for-it.sh", "publicacion:8118", "--", 
+    "/usr/local/bin/wait-for-it.sh", "recurso:8083", "--", 
+    "/usr/local/bin/wait-for-it.sh", "rol:8087", "--", 
+    "/usr/local/bin/wait-for-it.sh", "rolxpersona:8119", "--", 
+    "/usr/local/bin/wait-for-it.sh", "semestre:8120", "--", 
+    "/usr/local/bin/wait-for-it.sh", "tematica_central:8121", "--", 
+    "/usr/local/bin/wait-for-it.sh", "tipo_documento:8122", "--", 
+    "/usr/local/bin/wait-for-it.sh", "tipo_proyecto:8123", "--", 
+    "/usr/local/bin/wait-for-it.sh", "tipo_vinculacion:8124", "--",
+    "/usr/local/bin/wait-for-it.sh", "vinculacion:8084", "--",
+    "nginx", "-g", "daemon off;"]

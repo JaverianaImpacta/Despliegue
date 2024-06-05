@@ -1,0 +1,64 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+      <div class="topbar">
+<app-topbar></app-topbar>
+      </div>
+      <div class="informacion">
+          <div class="filtros">
+           
+                  <select [(ngModel)]="selectedDate">
+                      @for (date of dates; track date) {<option>{{ date }}</option>}
+                  </select>
+                  <select [(ngModel)]="selectedStatus">
+                      @for (status of statuses; track status) {<option>{{ status }}</option>}
+                  </select>
+              
+
+          </div>
+          <div class="tabla-informacion">
+            <h1>Estudiantes</h1>
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Id institucional</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Correo institucional</th>
+                <th scope="col">Sentido de Mi Practica</th>
+                <th scope="col">ARL</th>
+                <th scope="col">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (estudiante of estudiantes; track estudiante.id){
+                  <tr>
+                    <th scope="row">{{estudiante.id}}</th>
+                    <td>{{estudiante.idInstitucional}}</td>
+                    <td>{{estudiante.cedula}}</td>
+                    <td>{{obtenerNombres(estudiante.cedula)}}</td>
+                    <td>{{obtenerApellidos(estudiante.cedula)}}</td>
+                    <td>{{estudiante.correoInstitucional}}</td>
+                    <td>{{traduccion(estudiante.sentidoMiPractica)}}</td>
+                    <td>{{traduccion(estudiante.arl)}}</td>
+                    <td> <button class="btn btn-warning" (click)="detalleEstudiante(estudiante.cedula)">Detalles</button>
+                      @if(admin){
+                        <button class="btn btn-warning">Afiliar</button>
+                      }
+                      @if (profesor){
+                        <button class="btn btn-warning" (click)="vincular(estudiante.cedula)">Vincular</button>
+                      }
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>

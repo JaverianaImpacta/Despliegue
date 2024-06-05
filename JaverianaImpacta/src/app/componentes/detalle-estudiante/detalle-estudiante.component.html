@@ -1,0 +1,73 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+    <div class="contenedor">
+        <div class="topbar">
+            <app-topbar></app-topbar>
+        </div>
+        <div class="informacion">
+
+            <div class="tabla-informacion">
+                <div class="persona-info">
+                    
+                    <div class="persona-info">
+                        <h2>Información de la Persona</h2>
+                        @if (persona) {    
+                            <div >
+                            <p><strong>Nombre:</strong> {{ persona.primerNombre }} {{ persona.segundoNombre }} {{ persona.primerApellido }} {{ persona.segundoApellido }}</p>
+                            <p><strong>Tipo de Documento:</strong> {{ persona.tipoDocumento }}</p>
+                            <p><strong>Cédula:</strong> {{ persona.cedula }}</p>
+                            <p><strong>Correo Electrónico:</strong> {{ persona.correoElectronico }}</p>
+                            <p><strong>Fecha de Nacimiento:</strong> {{ persona.fechaNacimiento }}</p>
+                            <p><strong>Sexo:</strong> {{ persona.sexo }}</p>
+                            <p><strong>EPS:</strong> {{ persona.eps }}</p>
+                            <p><strong>Dirección:</strong> {{ persona.direccion }}</p>
+                            <p><strong>Número de Celular:</strong> {{ persona.numeroCelular }}</p>
+                        </div>}@else {
+                            <div>
+                                <p>No se encontró información para la cédula proporcionada.</p>
+                            </div>
+                        }
+                    </div>
+                    
+                    <div class="estudiante-info">
+                        <h2>Información del Estudiante</h2>
+                        @if (estudiante) {
+                            <div>
+                                <p><strong>ID Institucional:</strong> {{ estudiante.idInstitucional }}</p>
+                                <p><strong>Correo Institucional:</strong> {{ estudiante.correoInstitucional }}</p>
+                                <p><strong>Semestre:</strong> {{ estudiante.semestre }}</p>
+                                <p><strong>Sentido Mi Práctica:</strong> {{ estudiante.sentidoMiPractica ? 'Sí' : 'No' }}</p>
+                                <p><strong>ARL:</strong> {{ estudiante.arl ? 'Sí' : 'No' }}</p>
+                            </div>
+                        }@else {
+                            <div>
+                                <p>No se encontró información para el estudiante con la cédula proporcionada.</p>
+                            </div>
+                        }
+                       
+                    </div>
+                    
+                    <div class="vinculacion-info">
+                        <h2>Información de Vinculación</h2>
+                        <ul>
+                            @for (vinculacion of vinculaciones; track vinculacion) {
+                                @if (vinculacion.estudiante === estudiante.id ) {  
+                                    <li >
+                                    <p><strong>Código:</strong> {{ vinculacion.codigo }}</p>
+                                    <p><strong>Semestre:</strong> {{ vinculacion.semestre }}</p>
+                                    <p><strong>Tipo de Vinculación:</strong> {{ vinculacion.tipoVinculacion }}</p>
+                                    <p><strong>Certificado:</strong> {{ vinculacion.certificado ? 'Sí' : 'No' }}</p>
+                                </li>}
+                            }
+                        </ul>
+                    </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

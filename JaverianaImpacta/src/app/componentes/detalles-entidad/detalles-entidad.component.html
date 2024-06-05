@@ -1,0 +1,27 @@
+<app-sidebar></app-sidebar>
+<div class="container">
+  <section id="descripcion">
+    <p>{{entidad?.razonSocial}}</p>
+    <p>{{entidad?.documento+" : "}}{{entidad?.nit}}</p>
+    <p>{{"Actividad economica : "+entidad?.actividadEconomica}}</p>
+    <p>{{"Representante legal : "+entidad?.cedulaRepresentante}}</p>
+    <p>{{"Numero de convenio : "+entidad?.convenio}}</p>
+    <p>{{"Correo electronico : " +entidad?.correo}}</p>
+    <p>{{"Telefono : "+entidad?.telefono}}</p>
+  </section>
+  <section id="resumen">
+    <h3>Total de estudiantes en la entidad</h3>
+  </section>
+  <section id="estudiantes">
+    <h3>Estudiantes vinculados a la entidad</h3>
+  </section>
+  <section id="proyectos">
+    <h3>Proyectos propiedad de la entidad</h3>
+  </section>
+  <section id="interlocutores">
+    <h3>Interlocutores vinculados a la entidad</h3>
+  </section>
+  <section id="comentarios">
+    <h3>Comentarios</h3>
+  </section>
+</div>

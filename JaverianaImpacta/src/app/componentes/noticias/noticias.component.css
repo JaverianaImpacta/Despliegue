@@ -1,0 +1,156 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+
+.capa {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+.parrafo {
+   
+    width: 100%;
+    height: 440px;
+    padding: 30px 30px;
+    font-size: 25px;
+    /* Cambiado a 25px */
+    line-height: 1.5;
+    background: #fff;
+   
+    text-align: justify;
+    font-family: 'Open Sans', sans-serif;
+    /* Cambiado a Open Sans */
+}
+
+.parrafo img {
+    width: 510px;
+    border-radius: 5px;
+    float: left;
+    margin-right: 15px;
+}
+
+.titulo {
+    color: #04347C; /* Cambiado a color azul */
+    font-size: 45px; /* Tamaño de fuente 45px */
+    font-family: 'Open Sans', sans-serif; /* Cambiado a Open Sans */
+    font-weight: bold; /* Añadido negrita */
+    margin-bottom: 25px;
+}
+
+.title-container {
+    position: relative; /* Cambia de posición absoluta a relativa */
+  
+  
+}
+.title-container h3 {
+    
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+    color: black;
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.title-container .underline {
+    width: 120px;
+    height: 15px;
+    background-color: #04347C;
+    margin-top: -15px;
+    margin-bottom: 50px;
+}
+.subtitulo {
+    font-size: 19px;
+    /* Tamaño de subtitulo */
+    margin-bottom: 35px;
+}
+
+.pie-pagina {
+    margin-top: 30px;
+    /* Espacio entre el texto y el pie de página */
+    font-size: 19px;
+    /* Tamaño del pie de página */
+    text-align: center;
+    /* Centrar el texto del pie de página */
+    color: #777;
+    /* Color de texto gris para el pie de página */
+}
+@media (max-width: 858px) {
+    .title-container .underline {
+        width: 80px;
+        height: 15px;
+        background-color: #04347C;
+        margin-top: -5px;
+    }
+    .imagen-nosotros figure .capa p {
+        color: black;
+        font-size: 5px;
+        line-height: 1.5;
+        padding-top: 40px;
+        width: 100%;
+        max-width: 220px;
+        box-sizing: border-box; /* Ensure padding is included in the element's width */
+        word-wrap: normal; /* Ensure long words break to the next line */
+    }
+    .parrafo {
+   
+        width: 100%;
+        height: 440px;
+        padding: 30px 30px;
+        font-size: 25px;
+        /* Cambiado a 25px */
+        line-height: 1.5;
+        background: #fff;
+       
+        text-align: justify;
+        font-family: 'Open Sans', sans-serif;
+        /* Cambiado a Open Sans */
+    }
+    
+    .parrafo img {
+        width: 510px;
+        border-radius: 5px;
+        float: left;
+        margin-right: 15px;
+    }
+    
+    .titulo {
+        color: #04347C; /* Cambiado a color azul */
+        font-size: 45px; /* Tamaño de fuente 45px */
+        font-family: 'Open Sans', sans-serif; /* Cambiado a Open Sans */
+        font-weight: bold; /* Añadido negrita */
+        margin-bottom: 25px;
+    }
+    
+    .title-container {
+        position: relative; /* Cambia de posición absoluta a relativa */
+      
+      
+    }
+    .title-container h3 {
+        
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        color: black;
+        text-align: left; /* Alineación del texto a la izquierda */
+    }
+    
+   
+    .subtitulo {
+        font-size: 10px;
+        /* Tamaño de subtitulo */
+        margin-bottom: 35px;
+    }
+    
+    .pie-pagina {
+        margin-top: 30px;
+        /* Espacio entre el texto y el pie de página */
+        font-size: 10px;
+        /* Tamaño del pie de página */
+        text-align: center;
+        /* Centrar el texto del pie de página */
+        color: #777;
+        /* Color de texto gris para el pie de página */
+    }
+}

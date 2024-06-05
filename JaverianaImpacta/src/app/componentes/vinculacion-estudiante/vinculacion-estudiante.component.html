@@ -1,0 +1,42 @@
+<app-sidebar></app-sidebar>
+<div class="aplicacion">
+  <div class="contenedor">
+    <div class="topbar">
+      <app-topbar></app-topbar>
+    </div>
+    <div class="informacion">
+
+      <div class="tabla-informacion">
+        <h1>Vincular estudiante</h1>
+        <h3>Estas intentando vincular a el/la estudiante {{persona?.primerNombre+" "+persona?.primerApellido}}</h3>
+        <form class="custom-form" [formGroup]="chequeoFormulario" (ngSubmit)="onSubmit()">
+          <div>
+            <input type="number" placeholder="Codigo" class="form-control" formControlName="codigo" />
+            <label for="semestre">Seleccione un semestre</label>
+            <select id="semestre" formControlName="semestre">
+              @for(semestre of semestres; track semestre.id){
+              <option [value]="semestre.codigo">{{ semestre.codigo }}</option>
+              }
+            </select>
+            <label for="proyecto">Seleccione un proyecto</label>
+            <select id="proyecto" formControlName="proyecto">
+              @for(proyecto of proyectos; track proyecto.id){
+              <option [value]="proyecto.codigo">{{ proyecto.nombre }}</option>
+              }
+            </select>
+            <label for="tipo">Seleccione un tipo de vinculación</label>
+            <select id="tipo" formControlName="tipo">
+              @for(tipo of tipos; track tipo.id){
+              <option [value]="tipo.codigo">{{ tipo.descripcion }}</option>
+              }
+            </select>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

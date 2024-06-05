@@ -1,0 +1,26 @@
+.nosotros {
+    height: 1000px;
+    width: 100%;
+}
+
+.elementos {
+    overflow: hidden;
+}
+
+#noticias-conteiner {
+    height: 1100px; /* Altura fija del contenedor */
+    width: 100%;
+    overflow: auto;
+  
+}
+
+#actividades{
+    margin-bottom: 40px;
+}
+
+
+@media (max-width: 858px) {
+    .nosotros {
+        height: 600px;
+    }
+}

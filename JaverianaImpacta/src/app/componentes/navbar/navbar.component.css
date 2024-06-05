@@ -1,0 +1,314 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+
+
+header.encabezado {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.imagen {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Color negro con 60% de opacidad */
+
+}
+
+
+.imagen img.imagen-central {
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 80px);
+  /* Para mantener la proporción de la imagen */
+  max-height: 80%;
+}
+
+nav {
+  background: transparent;
+  height: 80px;
+  width: 100%;
+}
+
+.enlace {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+
+.logo-img {
+  width: 500px;
+  padding-top: 10px;
+  /* ajusta el valor según tus necesidades */
+  height: auto;
+}
+
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  margin-right: 40px;
+}
+
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 10px 20px;
+  padding-top: 60px;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 25px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+}
+
+li a.active,
+li a:hover {
+  background: transparent;
+  transition: .5s;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+
+.boton-redondo {
+  border-radius: 50%;
+  width: 120px;
+  /* Puedes ajustar el tamaño según tus necesidades */
+  height: 120px;
+  /* Puedes ajustar el tamaño según tus necesidades */
+  background-color: #2C5697;
+  /* Puedes ajustar el color de fondo */
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-right: 30px;
+}
+
+.boton-redondo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* La imagen se ajustará para llenar el espacio del botón */
+}
+
+@media (max-width: 1700px) {
+  .imagen img.imagen-central {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    height: 650px;
+    /* Para mantener la proporción de la imagen */
+
+  }
+  .fas.fa-bars {
+    font-size: 80px;
+    /* Tamaño del icono */
+    padding-top: 80px;
+    padding-right: 80px;
+  }
+
+  .checkbtn {
+    display: block;
+    padding-top: 20px;
+    position: relative;
+    z-index: 1000;
+  }
+
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #FCCC04;
+    top: 0px;
+    left: 100%;
+    text-align: center;
+    transition: all .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .logo-img {
+    width: 400px;
+    padding-top: 30px;
+    /* ajusta el valor según tus necesidades */
+    height: auto;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 0px;
+  }
+
+  nav ul li a {
+    color: black;
+    font-size: 40px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+  li a:hover,
+  li a.active {
+    background: none;
+    color: red;
+  }
+
+  #check:checked~ul {
+    left: 0;
+  }
+
+  .boton-redondo {
+    border-radius: 50%;
+    width: 200px;
+    /* Puedes ajustar el tamaño según tus necesidades */
+    height: 200px;
+    /* Puedes ajustar el tamaño según tus necesidades */
+    background-color: #2C5697;
+    /* Puedes ajustar el color de fondo */
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 858px) {
+
+  .imagen img.imagen-central {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    height: 250px;
+    /* Para mantener la proporción de la imagen */
+
+  }
+
+
+  header.encabezado {
+    height: 50px;
+    /* Ajusta el valor según tus necesidades */
+  }
+
+  .fas.fa-bars {
+    font-size: 30px;
+    /* Tamaño del icono */
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+  }
+
+  .checkbtn {
+    display: block;
+    padding-top: 20px;
+    position: relative;
+    z-index: 1000;
+  }
+
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #FCCC04;
+    top: 0px;
+    left: 100%;
+    text-align: center;
+    transition: all .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .logo-img {
+    width: 100px;
+    padding-top: 0px;
+    height: auto;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 0px 0;
+    line-height: 0px;
+  }
+
+  nav ul li a {
+    color: black;
+    font-size: 20px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+  li a:hover,
+  li a.active {
+    background: none;
+    color: red;
+  }
+
+  #check:checked~ul {
+    left: 0;
+  }
+
+  .boton-redondo {
+    border-radius: 50%;
+    width: 80px;
+    /* Puedes ajustar el tamaño según tus necesidades */
+    height: 80px;
+    /* Puedes ajustar el tamaño según tus necesidades */
+    background-color: #2C5697;
+    /* Puedes ajustar el color de fondo */
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin-top: 50px;
+    margin-left: 40px;
+  }
+}
